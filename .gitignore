@@ -4,3 +4,5 @@ bin
 *.pyc
 db.sqlite3
 settings.py
+actions/index.js
+node_modules/
