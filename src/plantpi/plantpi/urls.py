@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from plantpi import views
+from plantpi.views import PlantpiView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('api/', PlantpiView.as_view(), name='plantpiView'),
+    path('', views.index, name='index'), 
 ]

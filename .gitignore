@@ -6,3 +6,4 @@ db.sqlite3
 settings.py
 actions/index.js
 node_modules/
+static/bundles/
