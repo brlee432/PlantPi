@@ -1,8 +1,9 @@
 from rest_framework import serializers
 
-from plantpi.models import UserCities
+from plantpi.models import PlantMoisture
 
-class UserCitiesSerializer(serializers.ModelSerializer):
+
+class PlantMoistureSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = UserCities
-		fields = 'id', 'city_name', 'time_added'
+		model = PlantMoisture
+		fields = 'id', 'plant_name', 'moisture_voltage', 'time_measured'

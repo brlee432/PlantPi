@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Chart from '../components/chart';
+import WeatherChart from '../components/weather_chart';
 import GoogleMap from '../components/google_map';
 import _ from 'lodash';
 
@@ -31,8 +31,8 @@ class WeatherList extends Component {
 					<p>Cloudiness: {soon_clouds}%</p>
 					<p>Temp: {soon_temp} &deg;F</p>
 				</td>
-				<td><Chart data={clouds} color="blue" units="%" /></td>
-				<td><Chart data={temps} color="red" units="&deg;F" /></td>
+				<td><WeatherChart data={clouds} color="blue" units="%" /></td>
+				<td><WeatherChart data={temps} color="red" units="&deg;F" /></td>
 			</tr>
 		);
 	}

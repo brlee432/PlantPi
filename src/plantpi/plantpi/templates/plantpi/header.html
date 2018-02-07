@@ -7,6 +7,7 @@
 	{% load static %}
 	{% load render_bundle from webpack_loader %}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
@@ -36,6 +37,27 @@
 		th {
 			text-align:center;
 		}
+		.percentGrid {
+			max-width:1200px;
+			position: relative;
+			display:flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			flex-flow:row wrap !important;
+			justify-content:center;
+			align-items:center !important;
+		}
+		.percentContainer {
+			margin: 20px 60px 20px 20px;
+			width: 100%;
+			max-width:500px;
+			display:flex;
+			position:relative;
+		}
+
+		.flexFix {
+			display:flex;
+		}
 
 	</style>
 </head>
@@ -51,41 +73,9 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row" id="weather-info">
-			<div class="col-sm-12">
-				{% render_bundle 'main' %}
-			</div>
+		<div id="reactEntry">
+			{% render_bundle 'main' %}
 		</div>
-		<hr>
-		<div class="row" id="watering">
-			<div class="col-sm-12">
-				<h4>Watering</h4>
-				<div class="btn-group btn-group-justified" role="group" aria-label="...">
-				  <div class="btn-group" role="group">
-				    <button type="button" class="btn btn-success">Water Now!</button>
-				  </div>
-				  <div class="btn-group" role="group">
-				    <button type="button" class="btn btn-primary">Auto Water!</button>
-				  </div>
-				  <div class="btn-group" role="group">
-				    <button type="button" class="btn btn-info">Configure</button>
-				  </div>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="row" id="current-moisture-info">
-			<div class="col-sm-12">
-				<h4>Current Soil Saturation Status</h4>
-			</div>
-		</div>
-		<hr>
-		<div class="row" id="historical-moisture-info">
-			<div class="col-sm-12">
-				<h4>Historical Soil Saturation</h4>
-			</div>
-		</div>
-		<hr>
 	</div>
 	<footer>
 		<div class="container" style='margin:0 auto;'>

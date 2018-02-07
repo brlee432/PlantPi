@@ -1,3 +1,4 @@
+//var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; --use upon completion of react app to optimize
 var path = require ('path');
 var webpack = require ('webpack');
 var BundleTracker = require('webpack-bundle-tracker');
@@ -11,7 +12,10 @@ module.exports = {
     filename: '[name]-[hash].js'
   },
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'})
+    new BundleTracker({filename: './webpack-stats.json'}),
+    /*new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    }),*/
   ],
   module: {
     loaders: [{
