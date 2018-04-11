@@ -7,3 +7,4 @@ settings.py
 actions/index.js
 node_modules/
 static/bundles/
+src/plantpi/plantpi/migrations/

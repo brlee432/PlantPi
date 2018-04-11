@@ -7,17 +7,154 @@
 	{% load static %}
 	{% load render_bundle from webpack_loader %}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
-		html,
-		body {
-			height:100%;
+
+
+		html, body, .app, .main, #reactEntry {
+		  height: 100%;
+		  width: 100%;
+		  margin: 0;
+		  padding: 0;
+		  background-color: #000000;
+		  font-family: "Raleway", Helvetica, sans-serif !important;
 		}
 
-		footer,
-		.row {
+
+		.particles {
+			height:100%;
+			width:100%;
+		}
+
+		.infoContainer {
+		  display: flex;
+		  position: absolute;
+		  top:50%;
+		  left:50%;
+		  margin: -200px 0 0 -520px;
+		}
+
+		.slider {
+		  position: relative;
+		  width: 100%;
+		  margin: 0 auto;
+		  height: 100%;
+		  overflow: hidden;
+		  white-space: nowrap;
+		}
+		.slider .slider-wrapper {
+		  position: relative;
+		  height: 100%;
+		  width: 100%;
+		}
+		.slider .slider-wrapper .slide {
+		  display: inline-block;
+		  height: 100%;
+		  width: 100%;
+		}
+		.slider .settings-icon {
+		  cursor: pointer;
+		  position: absolute;
+		  top: 15px;
+		  right: 15px;
+		  z-index: 99999999999999;
+		  background: white;
+		  border-radius: 50%;
+		  padding: 5px;
+		}
+		.slider .settings-icon path, .slider .settings-icon polygon {
+		  fill: black;
+		}
+		.slider .settings {
+		  background: rgba(0, 0, 0, 0.75);
+		  width: 100%;
+		  height: 100%;
+		  position: fixed;
+		  z-index: 999999999;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}
+		.slider .settings .menu {
+		  width: 600px;
+		  height: 350px;
+		  background: white;
+		}
+
+		@media (max-width: 1200px) {
+		  .slider-right-arrow, .slider-left-arrow {
+		  	display:none !important;
+		  }
+		}
+		.slider-right-arrow, .slider-left-arrow {
+		  height: 50px;
+		  width: 50px;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  background: #f9f9f9;
+		  border-radius: 50%;
+		  cursor: pointer;
+		  transition: transform ease-in 0.1s;
+		}
+		.slider-right-arrow:hover, .slider-left-arrow:hover {
+		  transition: transform ease-in 0.1s;
+		  transform: scale(1.4);
+		}
+		.cool-buttons {
+		  background: black;
+		  border: 2px solid white;
+		}
+		.slider-right-arrow {
+		  position: absolute;
+		  top: 50%;
+		  right: 25px;
+		  z-index: 999;
+		  color: black;
+		}
+		.slider-right-arrow img {
+		  transform: translate(2px, 0);
+		}
+		.slider-right-arrow img:focus {
+		  outline: 0;
+		}
+		.slider-left-arrow {
+		  position: absolute;
+		  top: 50%;
+		  left: 25px;
+		  z-index: 999;
+		  color: black;
+		}
+		.slider-left-arrow img {
+		  transform: translate(-2px, 0);
+		}
+		.slider-left-arrow img:focus {
+		  outline: 0;
+		}
+		.dots-container {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  text-align: center;
+		  z-index: 9999;
+		  padding: 5px 0;
+		}
+		.dots-container .dot {
+		  background: #222;
+		  display: inline-block;
+		  padding: 10px;
+		  margin-right: 5px;
+		  cursor: pointer;
+		  border-radius: 50%;
+		}
+		.dots-container .active {
+		  background: #fff;
+		}
+		
+		footer {
 			text-align:center;
 		}
 
@@ -30,15 +167,12 @@
 			width:80%;
 			margin: 0 auto;
 		}
-		td:first-of-type, td:first-of-type > div {
-			height:20rem;
-			width:30rem;
-		}
-		th {
-			text-align:center;
-		}
+
+
+
 		.percentGrid {
-			max-width:1200px;
+			max-width:100%;
+			margin: 0 auto;
 			position: relative;
 			display:flex;
 			-webkit-box-orient: horizontal;
@@ -47,7 +181,114 @@
 			justify-content:center;
 			align-items:center !important;
 		}
-		.percentContainer {
+
+		
+
+		.plant-name {
+			font-size: 4.5rem !important;
+		}
+		
+		@media(max-width:1200px) {
+			.percentGrid {
+				max-width:80%;
+				margin-left:100px;
+				margin-top: 50px;
+			}
+			.progressbar-text {
+			font-size: 2.5rem !important;
+			}
+
+			.info-container {
+				top:30%;
+				left:30%;
+			}
+
+			.plant-name {
+				font-size: 2.5rem !important;
+			}
+		}
+
+		@media(max-width:980px) {
+			.percentGrid {
+				max-width:80%;
+				margin-left:110px;
+				margin-top: 50px;
+			}
+			.progressbar-text {
+			font-size: 2.5rem !important;
+			}
+
+			.info-container {
+				top:30%;
+				left:30%;
+			}
+
+			.plant-name {
+				font-size: 2.5rem !important;
+			}
+		}
+
+		@media(max-width:800px) {
+			.info-container {
+				top:50%;
+				left:50%;
+			}
+			.percentGrid {
+				max-width:70%;
+				margin-left:220px;
+				margin-top: 100px;
+			}
+			.progressbar-text {
+			font-size: 2rem !important;
+			}
+
+			.plant-name {
+				font-size: 2rem !important;
+			}
+		}
+
+		@media(max-width:510px) {
+			.percentGrid {
+				max-width:58% !important;
+				margin-left:300px;
+			}
+			.progressbar-text {
+			font-size: 1.5rem !important;
+			}
+
+			.plant-name {
+				font-size: 1.5rem !important;
+			}
+		}
+
+		@media (max-width: 300px) {
+			.percentGrid {
+				max-width:20% !important;
+			}
+			.progressbar-text {
+			font-size: 1rem !important;
+		}
+
+			.plant-name {
+				font-size: 1rem !important;
+			}
+		}
+
+		.percentContainer:first-of-type {
+			margin: 20px 60px 20px 0px;
+			width: 100%;
+			max-width:500px;
+			display:flex;
+			position:relative;
+		}
+		.percentContainer:last-of-type {
+			margin: 20px 0px 20px 20px;
+			width: 100%;
+			max-width:500px;
+			display:flex;
+			position:relative;
+		}
+		.percentContainer{
 			margin: 20px 60px 20px 20px;
 			width: 100%;
 			max-width:500px;
@@ -55,32 +296,478 @@
 			position:relative;
 		}
 
+		.Table {
+			max-width:100%;
+			background-color: #EEEEEE;
+			text-align:center;
+			justify-content:center;
+			align-items: center;
+	
+		}
+
 		.flexFix {
 			display:flex;
+			background-color:#EEEEEE;
+			padding:15px;
+			border-radius:10px;
+		}
+
+		
+		@media(max-width: 800px) {
+			#waterControlPanel {
+				max-height: 200px !important;
+				width: 420px !important;
+				background-color:#EEEEEE;
+				display: block;
+			    position: absolute;
+			    margin: -200px 0 0 -200px !important;
+		        top: 50%;
+		        left:50%;
+		        border-radius:10px;
+			}
+
+			#waterControlPanel > p {
+				text-align: center;
+				font-size: 1.5rem !important;
+				font-style:italic;
+			}
+
+			#waterControlPanel > hr {
+				color: black;
+				border-color: black;
+				margin-bottom: 0px;
+			}
+
+			#waterControlPanel > .btn-success {
+				display:block !important;
+				width:100%;
+				max-height: 200px;
+				font-size: 2.5rem !important;
+				vertical-align:middle;
+				position: relative;
+				border-radius: 0px 0px 10px 10px;  !important;
+			}
+			
+			.control-panel-title {
+				text-align:center;
+				font-size: 3rem !important;
+			}
+		}
+
+		@media(max-width:500px) {
+			#waterControlPanel {
+				margin: -200px 0 0 -210px !important;
+			}
+		}
+
+		#waterControlPanel {
+			max-height: 400px;
+			width: 620px;
+			background-color:#EEEEEE;
+			display: block;
+		    position: absolute;
+		    margin: -200px 0 0 -300px;
+	        top: 50%;
+	        left:50%;
+	        border-radius:10px;
+		}
+
+		#waterControlPanel > p {
+			text-align: center;
+			font-size: 2rem;
+			font-style:italic;
+		}
+
+		#waterControlPanel > hr {
+			color: black;
+			border-color: black;
+			margin-bottom: 0px;
+		}
+
+		#waterControlPanel > .btn-success {
+			display:block !important;
+			width:100%;
+			height: 275px;
+			font-size: 3.5rem;
+			vertical-align:middle;
+			position: relative;
+			border-radius: 0px 0px 10px 10px;  !important;
+		}
+		
+		.control-panel-title {
+			text-align:center;
+			font-size: 4.5rem;
+		}
+
+		td > div {
+			height:200px;
+			width: 400px;
+			text-align:center;
+			justify-content:center;
+			align-items: center;
+			margin: 0 auto;
+		}
+
+		td > div > svg {
+			height:170px;
+			width: 400px;
+			text-align:center;
+			justify-content:center;
+			align-items: center;
+			margin: 0 auto;
+		}
+
+		td {
+			position:relative !important;
+			height:200px;
+			width:500px;
+			
+		}
+
+		th {
+			padding-top:15px;
+			font-size: 2.5rem;
+			text-align:center;
+			justify-content:center;
+			align-items: center;
+		}
+
+		#weatherPanel {
+		  position: absolute;
+		  max-height: 690px;
+		  max-width: 1000px;
+		  margin: -300px 0 0 -500px;
+	      top: 50%;
+	      left:50%;
+	      background-color: #EEEEEE;
+	      padding:0 20px 20px 20px;
+	      border-radius:10px;
+		}
+
+		#weatherPanel > h1 {
+			text-align:center;
+		}
+
+		#quickWeather > p, #weatherPanel > div {
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+
+
+
+		.weatherIcon {
+				width:70px;
+		}
+
+		@media(max-width:1050px) {
+			td > div {
+				height:200px;
+				width: 400px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td > div > svg {
+				height:150px;
+				width: 350px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td {
+				position:relative !important;
+				height:150px;
+				width:360px;
+				
+			}
+
+			th {
+				padding-top:15px;
+				font-size: 1.5rem;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+			#weatherPanel {
+			  position: absolute;
+			  max-height: 570px;
+			  max-width: 850px;
+			  margin: -290px 0 0 -430px;
+		      top: 50%;
+		      left:50%;
+		      background-color: #EEEEEE;
+		      padding:0 20px 20px 20px;
+		      border-radius:10px;
+			}
+
+			.Table {
+				max-width: 100%;
+				background-color: #EEEEEE;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+
+			#weatherPanel > h1 {
+				text-align:center;
+			}
+
+			#quickWeather > p, #weatherPanel > div {
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+
+			.weatherIcon {
+				width:50px;
+			}
+
+			.control-panel-title {
+				text-align:center;
+				font-size: 3rem;
+			}
+		}
+
+		@media(max-width:850px) {
+			td > div {
+				height:140px;
+				width: 280px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td > div > svg {
+				height:80px;
+				width: 150px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td {
+				position:relative !important;
+				height:100px;
+				width:255px;
+				
+			}
+
+			th {
+				padding-top:15px;
+				font-size: 1.5rem;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+			#weatherPanel {
+			  position: absolute;
+			  max-height: 500px;
+			  max-width: 600px;
+			  margin: -280px 0 0 -300px;
+		      top: 50%;
+		      left:50%;
+		      background-color: #EEEEEE;
+		      padding:0 20px 20px 20px;
+		      border-radius:10px;
+			}
+
+			.Table {
+				max-width: 100%;
+				background-color: #EEEEEE;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+
+			#weatherPanel > h1 {
+				text-align:center;
+			}
+
+			#quickWeather > p, #weatherPanel > div {
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+
+			.weatherIcon {
+				width:50px;
+			}
+
+			.control-panel-title {
+				text-align:center;
+				font-size: 3rem;
+			}
+		}
+
+		@media(max-width:720px) {
+			td > div {
+				height:140px;
+				width: 280px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td > div > svg {
+				height:80px;
+				width: 150px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td {
+				position:relative !important;
+				height:100px;
+				width:255px;
+			}
+
+			th {
+				padding-top:15px;
+				font-size: 1.5rem;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+			#weatherPanel {
+			  position: absolute;
+			  max-height: 500px;
+			  max-width: 600px;
+			  margin: -280px 0 0 -300px;
+		      top: 50%;
+		      left:50%;
+		      background-color: #EEEEEE;
+		      padding:0 20px 20px 20px;
+		      border-radius:10px;
+			}
+
+			.Table {
+				max-width: 100%;
+				background-color: #EEEEEE;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+
+			#weatherPanel > h1 {
+				text-align:center;
+			}
+
+			#quickWeather > p, #weatherPanel > div {
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+
+			.weatherIcon {
+				width:50px;
+			}
+
+			.control-panel-title {
+				text-align:center;
+				font-size: 3rem;
+			}
+		}
+
+		@media(max-width:630px) {
+			td > div {
+				height:100px;
+				width: 200px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td > div > svg {
+				height:80px;
+				width: 150px;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			td {
+				position:relative !important;
+				height:100px;
+				width:255px;
+				
+			}
+
+			th {
+				padding-top:15px;
+				font-size: 1.5rem;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+			#weatherPanel {
+			  position: absolute;
+			  max-height: 460px;
+			  max-width: 600px;
+			  margin: -300px 0 0 -300px;
+		      top: 50%;
+		      left:50%;
+		      background-color: #EEEEEE;
+		      padding:0 20px 20px 20px;
+		      border-radius:10px;
+			}
+
+			.Table {
+				max-width: 100%;
+				background-color: #EEEEEE;
+				text-align:center;
+				justify-content:center;
+				align-items: center;
+			}
+
+
+			#weatherPanel > h1 {
+				text-align:center;
+			}
+
+			#quickWeather > p, #weatherPanel > div {
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+
+
+			.weatherIcon {
+				width:50px;
+			}
+
+			.control-panel-title {
+				text-align:center;
+				font-size: 3rem;
+			}
+		}
+
+		.swipeDiv {
+			height:99% !important;
+			width: 100% !important;
 		}
 
 	</style>
 </head>
 <body class="body">
-	<div class="container" style="min-height:95%;">
-		<div class="row" id="app-info">
-			<div class="col-sm-12">
-				<h1>PlantPi</h1><img class="vine-pic" src="{% static 'uploads/vine.svg' %}">
-				<br>
-				<br>
-				{% block content %}
-				{% endblock %}
-			</div>
-		</div>
-		<hr>
-		<div id="reactEntry">
-			{% render_bundle 'main' %}
-		</div>
+	<div id="reactEntry">
+		{% render_bundle 'main' %}
 	</div>
-	<footer>
-		<div class="container" style='margin:0 auto;'>
-			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
-		</div>
-	</footer>	
 </body>
 </html>

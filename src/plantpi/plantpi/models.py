@@ -1,6 +1,6 @@
 from django.db import models
 
-class PlantMoisture(models.Model):
+class PlantData(models.Model):
 	plant_name = models.CharField(max_length=50)
-	moisture_voltage = models.IntegerField()
-	time_measured = models.DateTimeField(auto_now_add=True)
+	has_water = models.NullBooleanField()
+	time_last_watered = models.DateTimeField(auto_now_add=True)

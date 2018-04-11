@@ -6,7 +6,7 @@ export default function (state = [], action) {
 		case FETCH_WEATHER:
 			//Alternatively, one could use .concat(), as it also does not mutate state, merely creates new state.
 			//return state.concat([action.payload.data]);
-			return [action.payload.data, ...state];
+			return [action.payload.data];
 	}
 	return state;
 }

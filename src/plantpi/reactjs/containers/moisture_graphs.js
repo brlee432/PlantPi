@@ -7,14 +7,18 @@ import { fetchMoisture } from '../actions/index';
 import HistoryChart from '../components/history_chart';
 import PercentCircle from '../components/current_chart';
 
+
 class Graphs extends Component {
 	constructor(props) {
-		super(props); //gives access to props outside of constructor function
-
+		super(props);
 		this.props.fetchMoisture();
 	}
+	
+	componentWillReceiveProps(nextProps) {
+		this.timer = setTimeout(() => this.props.fetchMoisture(), 10000);
+	}
 
-	renderMoisture(moistureData) {
+	/*renderMoisture(moistureData) {
 		var plant_1_data = [];
 	    var plant_2_data = [];
 
@@ -26,24 +30,27 @@ class Graphs extends Component {
 			}
 		}
 
-		const id = moistureData.map(moisture => moisture.key);
+		const generateKey = () => {
+			var randomnumber = Math.floor(Math.random()*100) + 1;
+			return `${ randomnumber }_${ new Date().getTime() }`;
+		}
 		const plant_1_id = plant_1_data.map(moisture => moisture.id);
 		const plant_1_name = plant_1_data.map(moisture => moisture.plant_name);
-		const plant_1_level = _.map(plant_1_data.map(moisture => moisture.moisture_voltage), (moisture_voltage) => ((moisture_voltage/1023)*100));
-		const plant_1_time = plant_1_data.map(moisture => moisture.time_measured);
+		const plant_1_status = plant_1_data.map(moisture => moisture.has_water);
+		const plant_1_time = plant_1_data.map(moisture => moisture.time_last_watered);
 		const plant_2_id = plant_2_data.map(moisture => moisture.id);
 		const plant_2_name = plant_2_data.map(moisture => moisture.plant_name);
-		const plant_2_level = _.map(plant_2_data.map(moisture => moisture.moisture_voltage), (moisture_voltage) => ((moisture_voltage/1023)*100));
-		const plant_2_time = plant_2_data.map(moisture => moisture.time_measured);
+		const plant_2_status = plant_2_data.map(moisture => moisture.has_water);
+		const plant_2_time = plant_2_data.map(moisture => moisture.time_last_watered);
 
 			return (
-					<tr key={ id }>
-						<td><HistoryChart data={ plant_1_level } color="green" units="%" /></td>
-						<td><HistoryChart data={ plant_2_level } color="orange" units="%" /></td>
+					<tr key={ generateKey() }>
+						<td><HistoryChart data={ plant_1_status } color="green" units="%" /></td>
+						<td><HistoryChart data={ plant_2_status } color="orange" units="%" /></td>
 					</tr>
 				);
 
-	}
+	} */
 
 	renderCurrent(moistureData) {
 		var plant_1_data = [];
@@ -57,41 +64,34 @@ class Graphs extends Component {
 			}
 		}
 
-		const id = moistureData.map(moisture => moisture.key);
-		const plant_1_level = _.map(plant_1_data.map(moisture => moisture.moisture_voltage), (moisture_voltage) => ((moisture_voltage/1023)*100));
-		const plant_1_time = plant_1_data.map(moisture => moisture.time_measured);
-		const plant_2_level = _.map(plant_2_data.map(moisture => moisture.moisture_voltage), (moisture_voltage) => ((moisture_voltage/1023)*100));
-		const plant_2_time = plant_2_data.map(moisture => moisture.time_measured);
-		const plant_1_current_level = [plant_1_level[plant_1_level.length - 1]];
-		const plant_2_current_level = [plant_2_level[plant_2_level.length - 1]];
-		const currentData = [plant_1_level[plant_1_level.length - 1], plant_2_level[plant_2_level.length - 1]];
-
+		const generateKey = () => {
+			var randomnumber = Math.floor(Math.random()*100) + 1;
+			return `${ randomnumber }_${ new Date().getTime() }`;
+		}
+		const plant_1_status = plant_1_data.map(moisture => moisture.has_water);
+		const plant_1_time = plant_1_data.map(moisture => moisture.time_last_watered);
+		const plant_2_status = plant_2_data.map(moisture => moisture.has_water);
+		const plant_2_time = plant_2_data.map(moisture => moisture.time_last_watered);
+		const plant_1_current_status = [plant_1_status[plant_1_status.length - 1]];
+		const plant_2_current_status = [plant_2_status[plant_2_status.length - 1]];
+		const currentData = [plant_1_status[plant_1_status.length - 1], plant_2_status[plant_2_status.length - 1]];
+		
+		
 		return (
-				<div key={ id } className="flexFix">
+				<div key={ generateKey() } className="flexFix">
 					<PercentCircle curData={ currentData } />
 				</div>
 			);
 	}
 
 
+
 	render() {
 		return (
-				<div>
+				<div className="infoContainer">
 					<div className="percentGrid">
 						{this.props.moisture.map(this.renderCurrent)}
 					</div>
-					<h4>Historical Soil Saturation</h4>
-					<table className="table table-hover">
-						<thead>
-							<tr>
-								<th>Peppermint</th>
-								<th>Thyme</th>
-							</tr>
-						</thead>
-						<tbody>
-							{this.props.moisture.map(this.renderMoisture)}
-						</tbody>
-					</table>
 				</div>
 			);
 	}

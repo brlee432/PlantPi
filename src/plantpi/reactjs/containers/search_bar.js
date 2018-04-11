@@ -30,8 +30,8 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div>
-				<h4>Relevant Weather Information</h4>
+			<div className="slide">
+				<h1 className="control-panel-title">Relevant Weather Information</h1>
 				<form onSubmit={this.onFormSubmit} className="input-group">
 					<input
 						placeholder="See relevant weather information for your area."
@@ -40,7 +40,7 @@ class SearchBar extends Component {
 						onChange={this.onInputChange}
 					 />
 					<span className="input-group-btn">
-						<button type="submit" className="btn btn-secondary">Submit</button>
+						<button type="submit" className="btn btn-success">Search</button>
 					</span>
 				</form>
 			</div>

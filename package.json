@@ -30,12 +30,14 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "carousel": "0.0.3",
     "es6-promise": "^4.2.2",
     "lodash": "^4.17.4",
     "radium": "^0.21.0",
     "react-cookie": "^2.1.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-responsive": "^4.0.5",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"

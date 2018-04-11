@@ -3,15 +3,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-from plantpi.serializers import PlantMoistureSerializer
+from plantpi.serializers import PlantDataSerializer
 
-from plantpi.models import PlantMoisture
+from plantpi.models import PlantData
 
 def index(request):
 	return render(request, 'plantpi/home.html')
 
 class PlantpiView(APIView):
 	def get(self, request):
-		moistureData = PlantMoisture.objects.all()
-		serializer = PlantMoistureSerializer(moistureData, many=True)
+		moistureData = PlantData.objects.all()
+		serializer = PlantDataSerializer(moistureData, many=True)
 		return Response(serializer.data)
