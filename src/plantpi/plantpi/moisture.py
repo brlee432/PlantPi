@@ -15,19 +15,19 @@ conn = pymysql.connect() # your database keys here
 # You might not need the username and password variable, depends if you are using a provider or if you have your raspberry pi setup to send emails
 # If you have setup your raspberry pi to send emails, then you will probably want to use 'localhost' for your smtp_host
 
-smtp_username = "plantpi2018@gmail.com" # This is the username used to login to your SMTP provider
-smtp_password = "leethax88" # This is the password used to login to your SMTP provider
-smtp_host = "smtp.gmail.com" # This is the host of the SMTP provider
-smtp_port = 587 # This is the port that your SMTP provider uses
+smtp_username =  # This is the username used to login to your SMTP provider
+smtp_password =  # This is the password used to login to your SMTP provider
+smtp_host = # This is the host of the SMTP provider
+smtp_port =  # This is the port that your SMTP provider uses
 
-smtp_sender = "plantpi2018@gmail.com" # This is the FROM email address
-smtp_receivers = ['bclee@g.clemson.edu'] # This is the TO email address
+smtp_sender =  # This is the FROM email address
+smtp_receivers = [] # This is the TO email address
 
 # The next two variables use triple quotes, these allow us to preserve the line breaks in the string. 
 
 # This is the message that will be sent when NO moisture is detected
 
-message_dead = """From: PlantPi <plantpi2018@gmail.com>
+message_dead = """From: PlantPi <>
 Subject: Moisture Sensor Notification
 
 Warning, no moisture detected! Your plant could die soon!
@@ -35,7 +35,7 @@ Warning, no moisture detected! Your plant could die soon!
 
 # This is the message that will be sent when moisture IS detected again
 
-message_alive = """From: PlantPi <plantpi2018@gmail.com>
+message_alive = """From: PlantPi <>
 Subject: Moisture Sensor Notification
 
 Panic over! Plant has water again :)
