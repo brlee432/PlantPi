@@ -77,4 +77,4 @@ THE FRONTEND
 So how does all of this look? Is it responsive and pretty? Does it feature sensible UI/UX design? Does it respond to gestures on the right display?
 Yes, yes, and yes!
 
-* Picutres coming soon to prove this claim :)
+* Pictures coming soon to prove this claim :)
