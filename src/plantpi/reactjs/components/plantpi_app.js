@@ -5,6 +5,7 @@ import axios from 'axios'
 import Particles from 'react-particles-js';
 import Swipeable from 'react-swipeable';
 
+import LoginForm from '../containers/login_form';
 import SearchBar from '../containers/search_bar';
 import WeatherList from '../containers/weather_list';
 import Graphs from '../containers/moisture_graphs';
@@ -51,13 +52,17 @@ export default class App extends Component {
     }
 
     return (
-        <Swipeable onSwipedLeft={this.nextSlide} onSwipedRight={this.previousSlide} className="swipeDiv" >
-    		  { this.state.slideCount === 0 ? <div id="weatherPanel"><SearchBar /><WeatherList /></div> : null }
+      /*  <Swipeable onSwipedLeft={this.nextSlide} onSwipedRight={this.previousSlide} className="swipeDiv" >
+    	    { this.state.slideCount === 0 ? <div id="weatherPanel"><SearchBar /><WeatherList /></div> : null }
       	  { this.state.slideCount === 1 ? <Controls /> : null }
-      		{ this.state.slideCount === 2 ? <Graphs /> : null }
-      		<RightArrow nextSlide={this.nextSlide} />
+      	  { this.state.slideCount === 2 ? <Graphs /> : null }
+      	  <RightArrow nextSlide={this.nextSlide} />
           <LeftArrow previousSlide={this.previousSlide} />
           <Particles params={particlesJSON} className="particles"/>
+        </Swipeable> */
+        <Swipeable className="swipeDiv" >
+          <LoginForm />
+          
         </Swipeable>
     );
   }

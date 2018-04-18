@@ -2,7 +2,6 @@
 
 # Start by importing the libraries we want to use
 
-
 import RPi.GPIO as GPIO # This is the GPIO library we need to use the GPIO pins on the Raspberry Pi
 import smtplib # This is the SMTP library we need to send the email notification
 import time # This is the time library, we need this so we can use the sleep function
@@ -15,19 +14,19 @@ conn = pymysql.connect() # your database keys here
 # You might not need the username and password variable, depends if you are using a provider or if you have your raspberry pi setup to send emails
 # If you have setup your raspberry pi to send emails, then you will probably want to use 'localhost' for your smtp_host
 
-smtp_username =  # This is the username used to login to your SMTP provider
-smtp_password =  # This is the password used to login to your SMTP provider
-smtp_host = # This is the host of the SMTP provider
+smtp_username = "" # This is the username used to login to your SMTP provider
+smtp_password = "" # This is the password used to login to your SMTP provider
+smtp_host = "" # This is the host of the SMTP provider
 smtp_port =  # This is the port that your SMTP provider uses
 
-smtp_sender =  # This is the FROM email address
+smtp_sender = "" # This is the FROM email address
 smtp_receivers = [] # This is the TO email address
 
 # The next two variables use triple quotes, these allow us to preserve the line breaks in the string. 
 
 # This is the message that will be sent when NO moisture is detected
 
-message_dead = """From: PlantPi <>
+message_dead = """From: PlantPi 
 Subject: Moisture Sensor Notification
 
 Warning, no moisture detected! Your plant could die soon!
@@ -35,7 +34,7 @@ Warning, no moisture detected! Your plant could die soon!
 
 # This is the message that will be sent when moisture IS detected again
 
-message_alive = """From: PlantPi <>
+message_alive = """From: PlantPi 
 Subject: Moisture Sensor Notification
 
 Panic over! Plant has water again :)
@@ -66,8 +65,8 @@ def callback(channel):
 	elif channel == 18:
 		plant_name = "peppermint"
 	a = conn.cursor()
-	wetSQL = 'INSERT INTO `plantpi_plantdata` (`id`, `plant_name`, `has_water`, `time_last_watered`) VALUES (NULL, %s, "1", NOW());'
-	drySQL = 'INSERT INTO `plantpi_plantdata` (`id`, `plant_name`, `has_water`, `time_last_watered`) VALUES (NULL, %s, "0", NOW());'
+	wetSQL = 'INSERT INTO `` (`id`, `plant_name`, `has_water`, `time_last_watered`) VALUES (NULL, %s, "1", NOW());'
+	drySQL = 'INSERT INTO `` (`id`, `plant_name`, `has_water`, `time_last_watered`) VALUES (NULL, %s, "0", NOW());'
 		
 	if GPIO.input(channel):
 		print("LED off")

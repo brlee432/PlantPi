@@ -19,6 +19,7 @@ from plantpi import views
 from plantpi.views import PlantpiView
 
 urlpatterns = [
+    path('watering_url/', views.water_now, name='water_now'),
     path('admin/', admin.site.urls),
     path('api/', PlantpiView.as_view(), name='plantpiView'),
     path('', views.index, name='index'), 

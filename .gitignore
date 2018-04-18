@@ -8,3 +8,4 @@ actions/index.js
 node_modules/
 static/bundles/
 src/plantpi/plantpi/migrations/
+data_table_maintenance.py

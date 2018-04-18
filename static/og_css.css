@@ -1,0 +1,48 @@
+html,
+		body {
+			height:100%;
+			
+		}
+
+		footer,
+		.row {
+			text-align:center;
+		}
+
+		.vine-pic{
+			
+			width:20rem;
+		}
+		.alert {
+			text-align:left;
+			width:80%;
+			margin: 0 auto;
+		}
+		td:first-of-type, td:first-of-type > div {
+			height:20rem;
+			width:30rem;
+		}
+		th {
+			text-align:center;
+		}
+		.percentGrid {
+			max-width:1200px;
+			position: relative;
+			display:flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			flex-flow:row wrap !important;
+			justify-content:center;
+			align-items:center !important;
+		}
+		.percentContainer {
+			margin: 20px 60px 20px 20px;
+			width: 100%;
+			max-width:500px;
+			display:flex;
+			position:relative;
+		}
+
+		.flexFix {
+			display:flex;
+		}
