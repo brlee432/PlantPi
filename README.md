@@ -97,4 +97,4 @@ THE FRONTEND
 So how does all of this look? Is it responsive and pretty? Does it feature sensible UI/UX design? Does it respond to gestures on the right display?
 Yes, yes, and yes!
 
-* Check out this <a href='https://youtu.be/OzmuEuTMDkc'>link</a> to see it the project in it's current form! (Higher quality video coming soon!)
+* Check out this <a href='https://youtu.be/OzmuEuTMDkc'>link</a> to see it the project in it's current form!
