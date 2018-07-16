@@ -9,7 +9,7 @@ with:</p>
   * general weather information relevant to indoor houseplants //COMPLETED as of 4.11.2018
   * the moisture status of each plant in the array of monitored plants (whether each plant is wet or dry) //COMPLETED as of 4.11.2018
   * an email about plant moisture status any time an input change is detected from a particular moisture sensor //COMPLETED as of 4.11.2018
-  * the ability to trigger a watering event at the touch of a button in the application //IN PROGRESS as of 4.11.2018
+  * the ability to trigger a watering event at the touch of a button in the application //COMPLETED as of 4.11.2018
   
 <h4>THE HARDWARE</h4>
 
